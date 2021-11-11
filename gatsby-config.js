@@ -4,14 +4,29 @@ module.exports = {
     title: "Imported Config Cache Busting",
   },
   plugins: [
-    "gatsby-plugin-mdx",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: require("./mdx-options.js"),
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: "./posts",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "posts",
+        path: "./posts/",
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "pages",
         path: "./src/pages/",
       },
-      __key: "pages",
     },
   ],
 };
